@@ -42,6 +42,7 @@ class AmazonSpider(Spider):
         '''检查是否登录成功'''
         if 'Email and password are both required' in response.text:
             print('登录失败，用户名或密码错误。')
+	    exit()
         yield Request(self.merchant_search_url.format(keyword=self.keyword), callback=self.parse_moci)
     
     def parse_moci(self, response):
